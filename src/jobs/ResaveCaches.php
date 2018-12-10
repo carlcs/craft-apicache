@@ -45,7 +45,7 @@ class ResaveCaches extends BaseJob
                 $response = $client->get($uri);
                 FileHelper::writeToFile($filePath, $response->getBody());
             } catch (\Throwable $e) {
-                continue;
+                Craft::error("Couldn’t resave endpoint {$endpoint}: {$e->getMessage()}", __METHOD__);
             }
         }
     }

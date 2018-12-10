@@ -51,7 +51,7 @@ class Cache extends Component
                 $response = $client->get($uri);
                 FileHelper::writeToFile($filePath, $response->getBody());
             } catch (\Throwable $e) {
-                Craft::error('Couldn’t resave endpoint: '.$e->getMessage(), __METHOD__);
+                Craft::error("Couldn’t resave endpoint {$endpoint}: {$e->getMessage()}", __METHOD__);
             }
         }
     }
