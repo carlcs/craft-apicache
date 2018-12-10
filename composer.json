@@ -1,0 +1,35 @@
+{
+  "name": "carlcs/craft-apicache",
+  "description": "API Cache plugin for Craft CMS",
+  "version": "1.0.0-beta.1",
+  "type": "craft-plugin",
+  "keywords": [
+    "cache",
+    "api",
+    "craftcms"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "carlcs",
+      "homepage": "https://github.com/carlcs"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/carlcs/craft-apicache/issues?state=open",
+    "source": "https://github.com/carlcs/craft-apicache",
+    "docs": "https://github.com/carlcs/craft-apicache"
+  },
+  "require": {
+    "craftcms/cms": "^3.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "carlcs\\apicache\\": "src/"
+    }
+  },
+  "extra": {
+    "handle": "api-cache",
+    "name": "API Cache"
+  }
+}
