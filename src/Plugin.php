@@ -103,5 +103,13 @@ class Plugin extends \craft\base\Plugin
         Event::on(Element::class, Element::EVENT_AFTER_SAVE, function() {
             $this->getCache()->pushResaveCachesJob();
         });
+
+        Event::on(Element::class, Element::EVENT_AFTER_MOVE_IN_STRUCTURE, function() {
+            $this->getCache()->pushResaveCachesJob();
+        });
+
+        Event::on(Element::class, Element::EVENT_AFTER_DELETE, function() {
+            $this->getCache()->pushResaveCachesJob();
+        });
     }
 }
