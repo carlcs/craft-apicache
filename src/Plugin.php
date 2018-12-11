@@ -71,6 +71,7 @@ class Plugin extends \craft\base\Plugin
             !$request->getIsSiteRequest() ||
             !$request->getIsGet() ||
             $request->getIsActionRequest() ||
+            !$this->getSettings()->enableRouting ||
             $request->getHeaders()->get('user-agent') === ResaveCaches::USER_AGENT_HEADER
         ) {
             return;

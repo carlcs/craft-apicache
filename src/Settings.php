@@ -12,6 +12,11 @@ class Settings extends Model
     /**
      * @var bool
      */
+    public $enableRouting = true;
+
+    /**
+     * @var bool
+     */
     public $resaveOnElementSave = true;
 
     /**
