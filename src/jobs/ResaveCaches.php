@@ -13,6 +13,7 @@ class ResaveCaches extends BaseJob
     // =========================================================================
 
     const DESCRIPTION = 'Resaving API caches';
+    const USER_AGENT_HEADER = 'API cache plugin';
 
     // Properties
     // =========================================================================
@@ -33,7 +34,9 @@ class ResaveCaches extends BaseJob
         $totalEndpoints = count($this->endpoints);
 
         $cacheService = Plugin::getInstance()->getCache();
-        $client = Craft::createGuzzleClient();
+        $client = Craft::createGuzzleClient([
+            'headers' => ['User-Agent' => self::USER_AGENT_HEADER],
+        ]);
 
         foreach ($this->endpoints as $i => $endpoint) {
             $this->setProgress($queue, $i / $totalEndpoints);

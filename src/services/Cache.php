@@ -41,7 +41,9 @@ class Cache extends Component
      */
     public function resaveCaches()
     {
-        $client = Craft::createGuzzleClient();
+        $client = Craft::createGuzzleClient([
+            'headers' => ['User-Agent' => ResaveCaches::USER_AGENT_HEADER],
+        ]);
 
         foreach ($this->getEndpoints() as $endpoint) {
             $uri = Craft::getAlias($endpoint);

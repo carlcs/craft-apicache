@@ -2,6 +2,7 @@
 
 namespace carlcs\apicache;
 
+use carlcs\apicache\jobs\ResaveCaches;
 use carlcs\apicache\services\Cache;
 use Craft;
 use craft\base\Element;
@@ -69,7 +70,8 @@ class Plugin extends \craft\base\Plugin
         if (
             !$request->getIsSiteRequest() ||
             !$request->getIsGet() ||
-            $request->getIsActionRequest()
+            $request->getIsActionRequest() ||
+            $request->getHeaders()->get('user-agent') === ResaveCaches::USER_AGENT_HEADER
         ) {
             return;
         }
