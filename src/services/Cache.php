@@ -19,20 +19,23 @@ class Cache extends Component
 
     /**
      * Pushes a resave caches job, and clears existing ones.
+     *
+     * @param int|null $delay
      */
-    public function pushResaveCachesJob()
+    public function pushResaveCachesJob(int $delay = null)
     {
         $queue = Craft::$app->getQueue();
 
         $settings = Plugin::getInstance()->getSettings();
         $endpoints = $this->getEndpoints();
+        $delay = $delay ?? $settings->resaveJobDelay;
 
         if ($jobId = $this->_getCurrentJobId()) {
             $queue->release($jobId);
         }
 
         $queue
-            ->delay($settings->resaveJobDelay)
+            ->delay($delay)
             ->push(new ResaveCaches(compact('endpoints')));
     }
 

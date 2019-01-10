@@ -25,6 +25,11 @@ class Settings extends Model
     public $resaveJobDelay = 30;
 
     /**
+     * @var string|bool
+     */
+    public $apiSecret = false;
+
+    /**
      * @var string
      */
     public $cacheFolder = '@runtime/cache/api-cache';
